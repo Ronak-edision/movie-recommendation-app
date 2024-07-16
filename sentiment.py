@@ -3,8 +3,7 @@ from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import CountVectorizer
 import requests
-nltk.download('stopwords')
-nltk.download('punkt')
+
 
 ps = PorterStemmer()
 
