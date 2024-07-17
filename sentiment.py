@@ -1,10 +1,12 @@
+# sentiment.py
 import pickle
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
 import nltk
-from post_install import *
+from post_install import download_nltk_data  # Import the function to download NLTK data
 
-import requests
+# Download NLTK data if not already downloaded
+download_nltk_data()
 
 ps = PorterStemmer()
 
