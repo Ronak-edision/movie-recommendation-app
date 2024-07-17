@@ -2,3 +2,4 @@
 requests
 nldk
 scikit-learn
+nldk.corpus
