@@ -3,9 +3,8 @@ from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import CountVectorizer
 import requests
-
-
-
+import nltk
+nltk.download('stopwords')
 
 
 
