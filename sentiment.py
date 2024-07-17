@@ -4,10 +4,9 @@ from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import CountVectorizer
 import requests
 
-import os
 
-# Set the NLTK data path to the custom directory
-nltk.data.path.append(os.path.expanduser('~/.nltk_data'))
+
+
 
 
 ps = PorterStemmer()
