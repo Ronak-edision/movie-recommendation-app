@@ -3,10 +3,10 @@ import pickle
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
 import nltk
-from post_install import download_nltk_data  # Import the function to download NLTK data
+from post_install import setup_nltk_data  # Update import
 
-# Download NLTK data if not already downloaded
-download_nltk_data()
+setup_nltk_data()  # Set up NLTK data path
+
 
 ps = PorterStemmer()
 
