@@ -1,10 +1,9 @@
 import pickle
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
-from sklearn.feature_extraction.text import CountVectorizer
+import nltk
+
 import requests
-
-
 
 ps = PorterStemmer()
 
@@ -30,4 +29,3 @@ def evaluate_sentiment(text):
     a = cv.transform([text])  # Transform text into vector using CountVectorizer
     y_pred = clf2.predict(a)  # Predict sentiment using the classifier
     return 'positive' if y_pred[0] == 1 else 'negative'
-
