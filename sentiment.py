@@ -16,8 +16,14 @@ with open('clf2.pkl', 'rb') as f:
 
 # Function to preprocess text
 def remove_stopwords(text):
-    stop_words = set(stopwords.words('english'))
-    filtered_words = [word for word in text.split() if word not in stop_words]
+    try:
+        stop_words = set(stopwords.words('english'))
+    except LookupError:
+        nltk.download('stopwords')
+        stop_words = set(stopwords.words('english'))
+    
+    words = text.split()
+    filtered_words = [word for word in words if word.lower() not in stop_words]
     return ' '.join(filtered_words)
 
 def stem(text):
