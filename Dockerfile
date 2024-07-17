@@ -11,5 +11,8 @@ COPY . .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
+# Run the setup script to download NLTK stopwords
+RUN chmod +x setup.sh && ./setup.sh
+
 # Run the web service on container startup.
 CMD ["streamlit", "run", "app.py", "--server.port", "8080", "--server.address", "0.0.0.0"]
