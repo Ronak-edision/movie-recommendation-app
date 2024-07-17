@@ -2,6 +2,7 @@ import pickle
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
 import nltk
+from post_install import *
 
 import requests
 
