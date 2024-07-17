@@ -1,8 +1,12 @@
+# sentiment.py
 import pickle
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
-from sklearn.feature_extraction.text import CountVectorizer
-import requests
+import nltk
+from post_install import download_nltk_data  # Import the function to download NLTK data
+
+# Download NLTK data if not already downloaded
+download_nltk_data()
 
 ps = PorterStemmer()
 
@@ -15,8 +19,14 @@ with open('clf2.pkl', 'rb') as f:
 
 # Function to preprocess text
 def remove_stopwords(text):
-    stop_words = set(stopwords.words('english'))
-    filtered_words = [word for word in text.split() if word not in stop_words]
+    try:
+        stop_words = set(stopwords.words('english'))
+    except LookupError:
+        nltk.download('stopwords')
+        stop_words = set(stopwords.words('english'))
+    
+    words = text.split()
+    filtered_words = [word for word in words if word.lower() not in stop_words]
     return ' '.join(filtered_words)
 
 def stem(text):
@@ -28,4 +38,3 @@ def evaluate_sentiment(text):
     a = cv.transform([text])  # Transform text into vector using CountVectorizer
     y_pred = clf2.predict(a)  # Predict sentiment using the classifier
     return 'positive' if y_pred[0] == 1 else 'negative'
-
