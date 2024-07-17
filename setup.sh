@@ -7,5 +7,7 @@ headless= true\n\
 \n\
 ">~/.streamlit/config.toml
 
-# Download NLTK stopwords to the default directory
-python -c "import nltk; nltk.download('stopwords')"
+# Download NLTK stopwords to a custom directory
+mkdir -p ~/.nltk_data
+python -m nltk.downloader -d ~/.nltk_data stopwords
+
