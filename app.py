@@ -3,7 +3,7 @@ import pickle as pkl
 from sentiment import *
 from api_fetcher import *
 from recommender import *
-import requests
+
 
 # Load the data (assuming you have 'movies1.pkl' and 'similarity1.pkl' files)
 movies_df = pkl.load(open('movies1.pkl', 'rb'))
@@ -14,7 +14,7 @@ movies_list = movies_df['title'].values
 st.title('Movie Recommender System')
 
 # Check if a movie_id is provided in the URL parameters
-query_params = st.experimental_get_query_params()
+query_params = st.query_params
 selected_movie_id = query_params.get("movie_id", None)
 
 # Movie Details Page
@@ -23,9 +23,10 @@ if selected_movie_id:
     movie_details = fetch_movie_details(movie_id)
     cast_details = fetch_movie_cast(movie_id)
 
+
     st.header(movie_details['title'])
     poster_url = fetch_poster(movie_id)
-    if (poster_url):
+    if poster_url:
         st.image(poster_url)
     st.write(movie_details['overview'])
     st.write(f"Genres: {', '.join([genre['name'] for genre in movie_details['genres']])}")
@@ -42,10 +43,11 @@ if selected_movie_id:
             if member['profile_url']:
                 st.image(member['profile_url'], width=100)
             st.write(member['name'])
-
     # Recommendation section
     st.header("Recommended Movies")
+
     recommended_movie_names, recommended_movie_ids = recommend(movie_details['title'].lower(), movies_df, similarity)
+
     cols = st.columns(5)
     for idx, (name, movie_id) in enumerate(zip(recommended_movie_names, recommended_movie_ids)):
         with cols[idx]:
@@ -74,7 +76,7 @@ if selected_movie_id:
         st.write("No reviews available.")
 
     if st.button("Go Back"):
-        st.experimental_set_query_params()
+        st.query_params.clear()
 
 # Recommendation Page
 else:
