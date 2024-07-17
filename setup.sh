@@ -11,3 +11,5 @@ headless= true\n\
 mkdir -p ~/.nltk_data
 python -m nltk.downloader -d ~/.nltk_data stopwords
 
+# Set NLTK_DATA environment variable
+export NLTK_DATA=~/.nltk_data
