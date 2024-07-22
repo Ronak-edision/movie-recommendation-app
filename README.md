@@ -1,4 +1,5 @@
-https://movie-recommendation-app-wntj6yzrdcmhwlrfxufefy.streamlit.app/
+url: https://movie-recommendation-app-wntj6yzrdcmhwlrfxufefy.streamlit.app/
+<br>
 Project Statement: The project is a movie recommendation system that provides the top five similar movies to a selected movie. It also includes a sentiment analysis of the movie reviews.
 
 Goals of the Project:
